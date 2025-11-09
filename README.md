@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@ateliertech/adx402-sdk)](https://www.npmjs.com/package/@ateliertech/adx402-sdk)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Adx402 SDK enables web publishers to embed dynamic, rewarded ads powered by the Adx402 protocol — built on Solana + x402 — without requiring users to create accounts or wallets.
+Adx402 SDK enables web publishers to embed dynamic, rewarded ads powered by the Adx402 protocol. Built on Solana + x402 without requiring users to create accounts or wallets.
 
 ---
 
