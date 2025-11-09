@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@ateliertech/adx402-sdk)](https://www.npmjs.com/package/@ateliertech/adx402-sdk)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Adx402 SDK enables web publishers to embed dynamic, rewarded ads powered by the Adx402 protocol — built on Solana + x402 — without requiring users to create accounts or wallets.
+Adx402 SDK enables web publishers to embed dynamic, rewarded ads powered by the Adx402 protocol. Built on Solana + x402 without requiring users to create accounts or wallets.
 
 ---
 
@@ -27,7 +27,7 @@ npm install @ateliertech/adx402-sdk
 Or include directly in a webpage:
 
 ```html
-<script src="https://unpkg.com/@io-ateliertech/adx402-sdk/dist/adx402.umd.js"></script>
+<script src="https://unpkg.com/@ateliertech/adx402-sdk/dist/adx402.umd.js"></script>
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ Or include directly in a webpage:
 <div id="adx-slot"></div>
 
 <script type="module">
-  import { adx402 } from '@io-ateliertech/adx402-sdk';
+  import { adx402 } from '@ateliertech/adx402-sdk';
 
   adx402.init({
     wallet: 'F1a2b3...c9D0',           // Publisher wallet
