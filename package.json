@@ -1,6 +1,6 @@
 {
   "name": "@ateliertech/adx402-sdk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Vanilla JS SDK for embedding on-chain ads via the Adx402 protocol",
   "main": "dist/adx402.umd.js",
   "module": "dist/adx402.es.js",
