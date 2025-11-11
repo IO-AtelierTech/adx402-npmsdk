@@ -28,7 +28,13 @@ export const adx402 = {
             const res = await fetch(url);
             if (!res.ok) throw new Error('adx402: failed to fetch ad');
 
-            const ad = await res.json();
+            const response = await res.json();
+            const ad = response.data;
+
+            // Check if ad data is null (no ads available)
+            if (!ad) {
+                throw new Error('adx402: no ads available');
+            }
 
             // Impression tracking
             fetch(`${config.AD_SERVER_URL}/publisher/track-impression`, {
@@ -37,7 +43,7 @@ export const adx402 = {
                 body: JSON.stringify({ ad_id: ad.id, slot_id: slotId }),
             });
 
-            const img = createImage(ad.image_url, aspectRatio, async () => {
+            const img = createImage(ad.imageUrl, aspectRatio, async () => {
                 try {
                     const clickRes = await fetch(`${config.AD_SERVER_URL}/publisher/track-click`, {
                         method: 'POST',
@@ -48,7 +54,7 @@ export const adx402 = {
                 } catch (e) {
                     console.error('adx402 click tracking error:', e);
                 } finally {
-                    window.open(ad.target_url, '_blank', 'noopener,noreferrer');
+                    window.open(ad.targetUrl, '_blank', 'noopener,noreferrer');
                 }
             });
 
