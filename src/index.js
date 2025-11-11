@@ -24,14 +24,14 @@ export const adx402 = {
 
         try {
             const slotId = selector.replace('#', '');
-            const url = `${config.AD_SERVER_URL}/ad/?wallet=${state.wallet}&slot=${slotId}`;
+            const url = `${config.AD_SERVER_URL}/publisher/ad/?wallet=${state.wallet}&slot=${slotId}`;
             const res = await fetch(url);
             if (!res.ok) throw new Error('adx402: failed to fetch ad');
 
             const ad = await res.json();
 
             // Impression tracking
-            fetch(`${config.AD_SERVER_URL}/track-impression`, {
+            fetch(`${config.AD_SERVER_URL}/publisher/track-impression`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ad_id: ad.id, slot_id: slotId }),
@@ -39,7 +39,7 @@ export const adx402 = {
 
             const img = createImage(ad.image_url, aspectRatio, async () => {
                 try {
-                    const clickRes = await fetch(`${config.AD_SERVER_URL}/track-click`, {
+                    const clickRes = await fetch(`${config.AD_SERVER_URL}/publisher/track-click`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ ad_id: ad.id, slot_id: slotId }),
