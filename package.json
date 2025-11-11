@@ -1,6 +1,6 @@
 {
   "name": "@ateliertech/adx402-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Vanilla JS SDK for embedding on-chain ads via the Adx402 protocol",
   "main": "dist/adx402.umd.js",
   "module": "dist/adx402.es.js",
@@ -16,7 +16,13 @@
     "type": "git",
     "url": "git+https://github.com/IO-AtelierTech/adx402-npmsdk.git"
   },
-  "keywords": ["ads", "web3", "solana", "sdk", "adx402"],
+  "keywords": [
+    "ads",
+    "web3",
+    "solana",
+    "sdk",
+    "adx402"
+  ],
   "author": "AtelierTech",
   "license": "MIT",
   "publishConfig": {
