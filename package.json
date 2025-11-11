@@ -6,7 +6,8 @@
   "module": "dist/adx402.es.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "prepare": "vite build"
   },
   "files": [
     "dist"
