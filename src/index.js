@@ -37,18 +37,34 @@ export const adx402 = {
             }
 
             // Impression tracking
-            fetch(`${config.AD_SERVER_URL}/publisher/track-impression`, {
+            const impressionRes = await fetch(`${config.AD_SERVER_URL}/publisher/track-impression`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ad_id: ad.id, slot_id: slotId }),
+                body: JSON.stringify({ 
+                    adId: ad.id, 
+                    slotId: slotId, 
+                    wallet: state.wallet 
+                }),
             });
+            
+            let impressionId = null;
+            if (impressionRes.ok) {
+                const impressionData = await impressionRes.json();
+                impressionId = impressionData.data?.impressionId;
+            }
 
             const img = createImage(ad.imageUrl, aspectRatio, async () => {
+                if (!impressionId) {
+                    console.error('adx402: no impression ID available for click tracking');
+                    window.open(ad.targetUrl, '_blank', 'noopener,noreferrer');
+                    return;
+                }
+
                 try {
                     const clickRes = await fetch(`${config.AD_SERVER_URL}/publisher/track-click`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ ad_id: ad.id, slot_id: slotId }),
+                        body: JSON.stringify({ impressionId: impressionId }),
                     });
                     if (!clickRes.ok) throw new Error('click tracking failed');
                 } catch (e) {
